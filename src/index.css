@@ -1,0 +1,209 @@
+body {
+  padding: 100px;
+}
+
+table {
+  border-collapse: collapse;
+  border: 1px solid #ccc;
+}
+
+.table {
+  --table-border-color: rgb(193, 199, 208);
+  --control-background-color: rgb(244, 245, 247);
+  --selected-cell-border-color: rgb(0, 101, 255);
+  --selected-control-background-color: rgb(76, 154, 255);
+  --remove-button-background: rgba(9, 30, 66, 0.04);
+  --remove-button-color: rgb(94, 108, 132);
+  --remove-border: rgb(255, 86, 48);
+  --control-remove-background: rgb(255, 189, 173);
+  --add-circle-color: rgb(193, 199, 208);
+}
+
+td,
+th {
+  border-width: 1px 0 0 1px;
+  border-style: solid;
+  border-color: var(--table-border-color);
+  min-height: 40px;
+  padding: 8px;
+}
+
+td {
+  position: relative;
+  min-width: 50px;
+}
+
+.row-control,
+.column-control {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--table-border-color);
+  position: absolute;
+  background: var(--control-background-color);
+  box-sizing: border-box;
+}
+
+.row-control:hover,
+.column-control:hover,
+.select-row .row-control,
+.select-column .column-control {
+  border: 1px solid var(--selected-cell-border-color);
+  background: var(--selected-control-background-color);
+  z-index: 100;
+}
+
+.row-control > button,
+.column-control > button {
+  position: absolute;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+  width: 16px;
+  height: 16px;
+  border: 0;
+  padding: 0;
+  font-size: 1.1em;
+  background: var(--remove-button-background);
+  color: var(--remove-button-color);
+}
+
+.column-control {
+  border-bottom: none !important;
+  top: 0;
+  left: 0;
+  width: calc(100% + 2px);
+  height: 10px;
+  transform: translate(-1px, -11px);
+  align-items: flex-start;
+}
+
+.column-control:hover {
+  border-bottom: none !important;
+}
+
+.column-control > button {
+  transform: translateY(calc(-100% - 5px));
+}
+
+.remove-column .column-control {
+  border: 1px solid var(--remove-border);
+  background: var(--control-remove-background);
+}
+
+.remove-column .column-control > button {
+  background: var(--remove-border);
+  color: white;
+}
+
+.row-control {
+  border-right: none !important;
+  top: 0;
+  left: 0;
+  height: calc(100% + 2px);
+  width: 10px;
+  transform: translate(-11px, -1px);
+  justify-content: flex-start;
+}
+
+.row-control:hover {
+  border-right: none !important;
+}
+
+.row-control > button {
+  transform: translateX(calc(-100% - 5px));
+}
+
+.remove-row .row-control {
+  border: 1px solid var(--remove-border);
+  background: var(--control-remove-background);
+}
+
+.remove-row .row-control > button {
+  background: var(--remove-border);
+  color: white;
+}
+
+.add-column,
+.add-row {
+  position: absolute;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 16px;
+  height: 16px;
+}
+
+.add-column {
+  right: 0;
+  top: 0;
+  transform: translate(8px, -30px);
+}
+
+.add-column:before,
+.add-row:before {
+  content: '•';
+  border-radius: 50%;
+  color: var(--add-circle-color);
+  font-size: 0.9em;
+}
+
+.add-column:hover:before,
+.add-row:hover:before {
+  display: none;
+}
+
+.add-column:hover:after,
+.add-row:hover:after {
+  content: '+';
+  font-size: 0.8em;
+  background: rgb(244, 245, 247);
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 2px;
+}
+
+.add-row {
+  left: 0;
+  bottom: 0;
+  transform: translate(-30px, 8px);
+}
+
+.select-row,
+.select-column {
+  border: 1px solid var(--selected-cell-border-color);
+}
+
+.remove-column,
+.remove-row {
+  border: 1px solid var(--remove-border);
+}
+
+.resize-handler {
+  position: absolute;
+  right: -5px;
+  bottom: 0;
+  top: 0;
+  width: 10px;
+  z-index: 200;
+  cursor: ew-resize;
+}
+
+.resize-handler:hover:before,
+.resize-handler.highlight:before {
+  content: '';
+  display: block;
+  width: 2px;
+  background: var(--selected-cell-border-color);
+  margin: 0 auto;
+  height: 100%;
+}
+
+.resize-handler.first-row-resizer {
+  top: -10px !important;
+}

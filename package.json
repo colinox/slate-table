@@ -1,0 +1,29 @@
+{
+  "private": true,
+  "name": "cihad-slate-table-example-forked",
+  "description": "A simple sandbox to reproduce Slate issues in a pared down editor.",
+  "keywords": [],
+  "main": "index.js",
+  "dependencies": {
+    "@cihad/slate-table": "0.2.0-alpha.0",
+    "@udecode/slate-plugins": "1.0.0-alpha.25",
+    "@udecode/slate-plugins-table": "1.0.0-alpha.25",
+    "react": "16.14.0",
+    "react-dom": "16.14.0",
+    "slate": "0.61.0",
+    "slate-history": "0.61.0",
+    "slate-hyperscript": "0.61.0",
+    "slate-react": "0.61.0"
+  },
+  "devDependencies": {
+    "react-scripts": "1.0.0",
+    "typescript": "3.7.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "version": "0.0.0"
+}
